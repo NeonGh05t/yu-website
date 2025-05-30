@@ -1,0 +1,284 @@
+/* 页面布局设置 */
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 100px; /* 空出 60px 给固定导航栏 */
+}
+
+/* 导航栏样式 */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    padding: 15px;
+}
+
+/* 大屏：横向导航，始终可见 */
+.navbar {
+    display: flex;
+    flex-direction: row;       /* 横向排列 */
+    justify-content: space-around;   /* 均匀分布菜单 */
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0;
+    opacity: 1;
+    pointer-events: all;
+    transition: none;
+}
+
+/* 菜单项横向排列 */
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;  /* 水平居中 */
+    flex-wrap: wrap;          /* 宽度不够自动换行 */
+    gap: 0 24vw;              /* 横向间距设为视口宽度的 5% */
+}
+
+.nav-menu li {
+    margin: 0;
+    padding: 30px 0;          /* 竖直内边距 */
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+/* 汉堡按钮，默认隐藏 */
+.navbar-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 40px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* Mobile: ≤768px 时，纵向隐藏到左侧 */
+@media (max-width: 768px) {
+    /* 1) 导航栏从屏幕顶部下拉，不是侧边栏 */
+    .navbar {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;               /* 占满整个宽度 */
+        height: auto;              /* 根据菜单内容自适应高度 */
+        background: rgba(0, 0, 0, 0.3); /* 更透明 */
+        transform: translateY(-100%);   /* 隐藏到顶部外 */
+        transition: transform 0.3s ease;
+        padding: 0;                /* 去掉多余内边距 */
+    }
+    .navbar.show {
+        transform: translateY(0);  /* 下拉到可见 */
+    }
+  
+    /* 2) 汉堡按钮 固定左上 */
+    .navbar-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+    }
+  
+    /* 3) 菜单列表：宽度铺满，短高，半透明背景 */
+    .nav-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: none;             /* 默认隐藏 */
+        flex-direction: column;
+        background: transparent;   /* 背景让 .navbar 半透明即可 */
+        margin: 0;
+        padding: 10px 0;           /* 上下留空 */
+    }
+    .nav-menu.show {
+        display: flex;             /* 展开时纵向列表 */
+    }
+  
+    /* 4) 菜单项之间留一点空，不再左右对齐 */
+    .nav-menu li {
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* 导航栏悬停背景效果 */
+.navbar:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-item:hover {
+    opacity: 0.8;
+}
+
+/* 照片墙网格布局 */
+.photo-wall {
+    column-count: 4; /* 设置列数，自动适应屏幕 */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    align-items: start;
+    column-gap: 20px; /* 每列之间的间距 */
+}
+
+/* 瀑布流布局样式 */
+.waterfall {
+    margin: 0 20px;
+    background-color: black;
+    column-count: 5;
+    column-gap: 20px;
+}
+
+.waterfall .img {
+    margin-bottom: 20px;
+}
+
+.waterfall .img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* 照片墙网格布局 */
+.photo-wall {
+    column-count: 5;          /* 初始列数 */
+    column-gap: 20px;         /* 每列之间的间隙 */
+    display: block;           /* 使用块元素布局 */
+    padding: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+.photo-item {
+    break-inside: avoid;       /* 确保图片不会被拆分到不同的列 */
+    margin-bottom: 20px;       /* 图片之间的垂直间隙 */
+}
+
+.photo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;         /* 保持图片比例，填充容器 */
+    border-radius: 10px;
+}
+.photo-item:hover .photo-image {
+    transform: scale(1.05);
+}
+
+/* 模态框 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#modal-description {
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* —— 以下为翻转效果，追加到文件最底部 —— */
+
+/* 1. .nav-item 设置透视 */
+.nav-item {
+    position: relative;
+    perspective: 1000px;
+}
+
+/* 2. front/back 两面定位 */
+.nav-item .front,
+.nav-item .back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+/* 3. 初始化背面朝上隐藏 */
+.nav-item .back {
+    transform: rotateX(90deg);
+}
+
+/* 4. 悬停时翻转 */
+.nav-item:hover .front {
+    transform: rotateX(-90deg);
+}
+.nav-item:hover .back {
+    transform: rotateX(0deg);
+}
+
+@media screen and (max-width: 1200px) {
+    .waterfall {
+        column-count: 4;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .waterfall {
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .waterfall {
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width: 567px) {
+    .waterfall {
+        column-count: 1;
+    }
+}
+h2 {
+    color: white;  /* 设置标题颜色为白色 */
+    font-size: 12px; /* 设置字体大小为 36px */
+    text-align: center; /* 居中对齐文本 */
+    margin-top: 30px; /* 设置上边距 */
+}

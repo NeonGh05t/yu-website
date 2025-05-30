@@ -1,0 +1,365 @@
+/* 设置整个页面的字体，边距和填充 */
+body {
+    font-family: 'Courier New', monospace; /* 设置字体为等宽字体 */
+    margin: 0; /* 去除页面的默认外边距 */
+    padding: 0; /* 去除页面的默认内边距 */
+    background-color:black; /* 背景为深色，突出文本 */
+    
+    color: white; /* 文本颜色为白色 */
+    text-align: left; /* 文本居中 */
+    overflow: hidden; /* 禁止页面滚动（如果不需要滚动可以使用） */
+    overflow-y: scroll; /* 始终显示垂直滚动条 */
+    
+}
+
+/* 导航栏样式（透明背景，无边框） */
+header {
+    background-color: transparent; /* 导航栏背景透明 */
+    position: fixed; /* 固定在页面顶部 */
+    width: 100%; /* 宽度为 100%，占满整个页面 */
+    top: 0; /* 距离页面顶部为 0 */
+    left: 0; /* 距离页面左边为 0 */
+    z-index: 1000;  /* 确保导航栏在页面最前面 */
+    padding: 15px 0; /* 上下内边距 15px */
+}
+
+/* 页面布局设置 */
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 60px; /* 空出 60px 给固定导航栏 */
+}
+
+/* 导航栏样式 */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    padding: 15px;
+}
+
+/* 大屏：横向导航，始终可见 */
+.navbar {
+    display: flex;
+    flex-direction: row;       /* 横向排列 */
+    justify-content: space-around;   /* 均匀分布菜单 */
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0;
+    opacity: 1;
+    pointer-events: all;
+    transition: none;
+}
+
+/* 菜单项横向排列 */
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;  /* 水平居中 */
+    flex-wrap: wrap;          /* 宽度不够自动换行 */
+    gap: 0 24vw;              /* 横向间距设为视口宽度的 5% */
+}
+.nav-menu li {
+    margin: 0 ;
+    padding: 30px 0;          /* 竖直内边距 */
+}
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+/* 汉堡按钮，默认隐藏 */
+.navbar-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 40px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* Mobile: ≤768px 时，纵向隐藏到左侧 */
+@media (max-width: 768px) {
+    /* 1) 导航栏从屏幕顶部下拉，不是侧边栏 */
+    .navbar {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;               /* 占满整个宽度 */
+      height: auto;              /* 根据菜单内容自适应高度 */
+      background: rgba(0, 0, 0, 0.3); /* 更透明 */
+      transform: translateY(-100%);   /* 隐藏到顶部外 */
+      transition: transform 0.3s ease;
+      padding: 0;                /* 去掉多余内边距 */
+    }
+    .navbar.show {
+      transform: translateY(0);  /* 下拉到可见 */
+    }
+  
+    /* 2) 汉堡按钮 固定左上 */
+    .navbar-toggle {
+      display: block;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+    }
+  
+    /* 3) 菜单列表：宽度铺满，短高，半透明背景 */
+    .nav-menu {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: none;             /* 默认隐藏 */
+      flex-direction: column;
+      background: transparent;   /* 背景让 .navbar 半透明即可 */
+      margin: 0;
+      padding: 10px 0;           /* 上下留空 */
+    }
+    .nav-menu.show {
+      display: flex;             /* 展开时纵向列表 */
+    }
+  
+    /* 4) 菜单项之间留一点空，不再左右对齐 */
+    .nav-menu li {
+      margin: 8px 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+/* 导航栏悬停背景效果 */
+.navbar:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+/* —— 以下为翻转效果，追加到文件最底部 —— */
+
+/* 1. .nav-item 设置透视 */
+.nav-item {
+    position: relative;
+    perspective: 1000px;
+}
+
+/* 2. front/back 两面定位 */
+.nav-item .front,
+.nav-item .back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+/* 3. 初始化背面朝上隐藏 */
+.nav-item .back {
+    transform: rotateX(90deg);
+}
+
+/* 4. 悬停时翻转 */
+.nav-item:hover .front {
+    transform: rotateX(-90deg);
+}
+.nav-item:hover .back {
+    transform: rotateX(0deg);
+}
+
+/* 设置画布尺寸 */
+#myCanvas {
+    display: block; /* 使画布块级显示 */
+    margin: 0 auto; /* 居中显示 */
+    border: none;
+    max-width: 100%; /* 限制画布最大宽度为100% */
+    max-height: 80vh; /* 限制画布最大高度为80%的视口高度 */
+    margin-top: 50px;
+    width: 100%;  /* 宽度占满整个屏幕 */
+    height: 100%;  /* 高度占满整个屏幕 */
+    background: black;
+    
+}
+/* 首页内容的上边距 */
+#home-content {
+    margin-top: 50px;
+}
+
+/* 标题样式 */
+h1 {
+    color: white;  /* 设置标题颜色为白色 */
+    font-size: 36px; /* 设置字体大小为 36px */
+    text-align: center; /* 居中对齐文本 */
+    margin-top: 50px; /* 设置上边距 */
+}
+
+/* 下拉按钮样式 */
+#showIntroButton {
+    margin-top: 20px; /* 上边距 20px */
+    padding: 10px 20px; /* 内边距，10px 上下，20px 左右 */
+    font-size: 16px; /* 字体大小 16px */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+    background-color: #333; /* 背景颜色为深灰色 */
+    color: white; /* 字体颜色为白色 */
+    border: none; /* 去除默认边框 */
+    border-radius: 5px; /* 设置圆角边框 */
+}
+
+/* 按钮的悬停效果 */
+#showIntroButton:hover {
+    background-color: #555; /* 悬停时背景变为浅灰色 */
+}
+
+/* 介绍部分样式 */
+#introduction {
+    margin-top: 60px; /* 设置上边距为 100px */
+    padding: 20px; /* 内边距 20px */
+    background: linear-gradient(to bottom, #000000 0%, #17141f 100% ); /* 设置从黑色到深紫色的渐变背景 */
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: auto;
+    opacity: 1;  /* 初始时隐藏 */
+    transform: translateY(30px);  /* 初始时稍微向下偏移 */
+    transition: opacity 1s, transform 1s;  /* 添加平滑过渡效果 */
+    position: relative; /* 确保该部分不会影响页面滚动 */
+    font-family: 'Segoe UI', Tahoma, sans-serif; /* 设置与欢迎语一样的字体 */
+    display: flex;  /* 使用 flex 布局 */
+    flex-direction: column;  /* 横向排列子元素 */
+    justify-content: flex-start; /* 使段落从上到下排列 */
+    align-items: center; /* 垂直居中对齐图片和文本 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中对齐图片和文字 */
+    justify-content: flex-start; /* 图片在左，文字在右 */
+    max-width: 100%; /* 确保容器宽度不超出 */
+    text-align: left; /* 文字左对齐 */
+
+}
+
+/* 欢迎语标题居中 */
+#introduction h1 {
+    font-size: 2.5em; /* 字体大小为 2.5em */
+    margin-bottom: 20px; /* 下边距 20px */
+    text-align: left; /* 居中对齐 */
+}
+
+/* 图片和文字的容器样式 */
+.content-wrapper {
+    display: flex;  /* 使用 flex 布局 */
+    align-items: center; /* 垂直居中对齐图片和文本 */
+    justify-content: center; /* 水平居中 */
+    text-align: left; /* 标题左对齐 */
+}
+/* 图片样式 */
+.intro-image {
+    width: 200px; /* 图片固定宽度为200px */
+    height: auto; /* 保持比例 */
+    margin-right: 20px; /* 设置图片与文字之间的间距 */
+    border-radius: 10px; /* 圆角效果 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* 添加阴影效果 */
+
+}
+
+/* 文字部分样式，确保每段文字都竖直排列 */
+.text-container {
+    display: flex;  /* 使用 flex 布局 */
+    flex-direction: column;  /* 设置为垂直排列 */
+    align-items: flex-start; /* 文字左对齐 */
+    justify-content: flex-start; /* 文字从上到下排列 */
+    max-width: 600px; /* 限制文字的最大宽度 */
+}
+
+/* 介绍部分段落样式 */
+#introduction p {
+    font-size: 1em; /* 设置较大的文字 */
+    line-height: 1.8; /* 设置行间距 */
+    max-width: 1200px; /* 最大宽度，避免文字过长 */
+    text-align: left; /* 文字左对齐 */
+    color: #f0f0f0; /* 浅色文本，增加对比 */
+    margin-bottom: 15px;
+    flex-direction: column;  /* 文字部分从上到下排列 */
+
+    animation: fadeIn 3s ease-out; /* 添加渐显动画 */
+}
+
+/* 渐显效果的动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+/* 使介绍部分显示时的动画 */
+#introduction.visible {
+    opacity: 1;  /* 显示 */
+    transform: translateY(0);  /* 恢复到正常位置 */
+}
+
+
+
+/* 每个段落的样式 */
+.intro-text {
+    font-size: 1em; /* 字体大小 */
+    line-height: 1.6; /* 设置行间距 */
+    margin-bottom: 20px; /* 设置段落间距 */
+    text-align: justify; /* 设置文本两端对齐 */
+}
+
+/* 强调文本样式 */
+strong {
+    font-weight: bold; /* 加粗 */
+    color: #f0f0f0; /* 设置强调文本的颜色 */
+}
+
+/* 斜体效果 */
+em {
+    font-style: italic; /* 设置斜体 */
+}
+
+/* 主体内容的文本居中对齐 */
+main {
+    width: 100%;
+    /*text-align: center; /* 可选，居中文本 */
+}
+
+/* 页脚样式 */
+footer {
+    background: linear-gradient(to bottom, #17141f 100%);  /* 设置渐变背景，从黑色到深紫色 */
+    color: white;  /* 白色文本 */
+    text-align: center;  /* 居中文本 */
+    padding: 20px;  /* 内边距 */
+    position: relative;  /* 确保它位于页面底部 */
+    bottom: 0; /* 位于页面底部 */
+    width: 100%; /* 宽度为 100% */
+}
+
+/* 页脚内容样式 */
+footer .footer-content {
+    margin: 0;
+}
+
+/* 个人信息部分样式 */
+.personal-info p {
+    margin: 5px 0; /* 每个段落上下间距为 5px */
+    font-size: 1.2em; /* 字体大小为 1.2em */
+}

@@ -1,0 +1,231 @@
+/* 页面布局设置 */
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 100px; /* 空出 60px 给固定导航栏 */
+}
+
+/* 导航栏样式 */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    padding: 15px;
+}
+
+/* 大屏：横向导航，始终可见 */
+.navbar {
+    display: flex;
+    flex-direction: row;       /* 横向排列 */
+    justify-content: space-around;   /* 均匀分布菜单 */
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0;
+    opacity: 1;
+    pointer-events: all;
+    transition: none;
+}
+
+/* 菜单项横向排列 */
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;  /* 水平居中 */
+    flex-wrap: wrap;          /* 宽度不够自动换行 */
+    gap: 0 24vw;              /* 横向间距设为视口宽度的 5% */
+}
+
+.nav-menu li {
+    margin: 0;
+    padding: 30px 0;          /* 竖直内边距 */
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+/* 汉堡按钮，默认隐藏 */
+.navbar-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 40px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* Mobile: ≤768px 时，纵向隐藏到左侧 */
+@media (max-width: 768px) {
+    /* 1) 导航栏从屏幕顶部下拉，不是侧边栏 */
+    .navbar {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;               /* 占满整个宽度 */
+        height: auto;              /* 根据菜单内容自适应高度 */
+        background: rgba(0, 0, 0, 0.3); /* 更透明 */
+        transform: translateY(-100%);   /* 隐藏到顶部外 */
+        transition: transform 0.3s ease;
+        padding: 0;                /* 去掉多余内边距 */
+    }
+    .navbar.show {
+        transform: translateY(0);  /* 下拉到可见 */
+    }
+  
+    /* 2) 汉堡按钮 固定左上 */
+    .navbar-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+    }
+  
+    /* 3) 菜单列表：宽度铺满，短高，半透明背景 */
+    .nav-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: none;             /* 默认隐藏 */
+        flex-direction: column;
+        background: transparent;   /* 背景让 .navbar 半透明即可 */
+        margin: 0;
+        padding: 10px 0;           /* 上下留空 */
+    }
+    .nav-menu.show {
+        display: flex;             /* 展开时纵向列表 */
+    }
+  
+    /* 4) 菜单项之间留一点空，不再左右对齐 */
+    .nav-menu li {
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* 导航栏悬停背景效果 */
+.navbar:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-item:hover {
+    opacity: 0.8;
+}
+/* —— 以下为翻转效果，追加到文件最底部 —— */
+
+/* 1. .nav-item 设置透视 */
+.nav-item {
+    position: relative;
+    perspective: 1000px;
+}
+
+/* 2. front/back 两面定位 */
+.nav-item .front,
+.nav-item .back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+/* 3. 初始化背面朝上隐藏 */
+.nav-item .back {
+    transform: rotateX(90deg);
+}
+
+/* 4. 悬停时翻转 */
+.nav-item:hover .front {
+    transform: rotateX(-90deg);
+}
+.nav-item:hover .back {
+    transform: rotateX(0deg);
+}
+/* 整体背景和字体 */
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Courier New', monospace;
+    background: black;
+    color: white;
+}
+
+/* Timeline container */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Each image */
+.timeline-item {
+    height: 100vh; /* 每张图占满整个屏幕高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.2;
+    transform: scale(0.8);
+    transition: all 0.8s ease;
+}
+
+.timeline-item img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* 当前活跃图片 */
+.timeline-item.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 底部进度条 */
+.timeline-progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 999;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: white;
+    transition: width 0.3s ease;
+}

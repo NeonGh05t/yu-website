@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+    <!-- 页面头部，包含导航栏 -->
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <div class="navbar">
+                <!-- 菜单按钮：只在小屏幕时显示 -->
+                <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="../html/home.html" class="nav-item"><span class="front">Home</span><span class="back">Back to Home</span></a></li>
+                    <li><a href="../html/element.html" class="nav-item"><span class="front">Element</span><span class="back">Read More</span></a></li>
+                    <li><a href="../html/timeline.html" class="nav-item"><span class="front">Timeline</span><span class="back">Read More</span></a></li>
+                    <li><a href="../html/about.html" class="nav-item"><span class="front">About Me</span><span class="back">Read More</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <body>
+        <div>
+            <!-- 画布容器 -->
+            <canvas id="myCanvas"></canvas>
+        </div>
+    <!-- 下拉按钮 -->
+    <button id="showIntroButton">Show Introduction</button>
+
+    <!-- Introduction Section -->
+    <main>
+        <section id="introduction">
+            
+            <h1>Welcome to My Spiritual World</h1>
+            <div class="content-wrapper">
+            <img src="../figure/unknown_pleasure.jpg" alt="Unknown Pleasure" class="intro-image">
+            <div id="introduction">
+            
+                
+                <p class="intro-text">
+                    <p>这个网站旨在记录个人的兴趣爱好。我热爱摇滚和电子音乐，时常会听到一些非常喜欢的专辑，想要建立属于自己的音乐体系。通过可视化的方式记录我听过的音乐，并将它们推荐给别人。</p>
+                    <p>我喜欢创作，所以我所创作的任何一个事物都带有我对于世界的理解和审美，是我的作品</p>
+                    <p>在 <strong>Element</strong> 板块中，我会记录生活中发现的好音乐以及一些与精神和文化相关的内容。它是我音乐探索与精神成长的汇聚地。</p>
+                
+                    <p><strong>Timeline</strong> 是一个有趣的板块，记录我在不同人生阶段受到影响的作品。从中，你可以看到我思想的成长轨迹，以及那些塑造我的重要文化元素。</p>
+                
+                    <p><strong>About Me</strong> 提供了我的联系方式和个人介绍，让你更好地了解我。</p>
+                
+                    <p><strong>Home</strong> 页面中的动画效果灵感来源于 Joy Division 的专辑 <em>Unknown Pleasures</em>，这张专辑代表了律动的脉冲波。页面中的波纹效果与卡尔·荣格的心理学理论有关，象征着心灵深处的波动。</p>
+                </p>
+            </div>
+            
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="personal-info">
+                <p><strong>Siyu </strong></p>
+                <p><strong>Email: </strong>lsy9549@gmail.com</p>
+                <p><strong></strong>Shanghai, CHN</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/home.js"></script> <!-- 引入 JavaScript 文件 -->
+</body>
+</html>

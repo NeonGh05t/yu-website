@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="../css/about.css">
+</head>
+<body>
+    <!-- 页面头部，包含导航栏 -->
+    <header>
+        <nav>
+            <div class="navbar">
+                <!-- 菜单按钮：只在小屏幕时显示 -->
+                <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="../html/home.html" class="nav-item"><span class="front">Home</span><span class="back">Back to Home</span></a></li>
+                    <li><a href="../html/element.html" class="nav-item"><span class="front">Element</span><span class="back">Read More</span></a></li>
+                    <li><a href="../html/timeline.html" class="nav-item"><span class="front">Timeline</span><span class="back">Read More</span></a></li>
+                    <li><a href="../html/about.html" class="nav-item"><span class="front">About Me</span><span class="back">Read More</span></a></li>
+                </ul>
+            </nav>
+        </header>
+    <section id="about-me-intro">
+    <div class="container">
+        <div class="text-content">
+            <h1>LE SIYU, THIS WEBSITE IS A WEBSITE THAT RECORDS INTERESTING THINGS I FOUND IN MY LIFE, SIMILAR TO A PERSONAL BLOG.</h1>
+            <p>I THINK HTML IS A FREE DEVELOPMENT TOOL.</p>
+            <p>IT ALLOWS PEOPLE TO EASILY CREATE INTERACTIVE INTERFACES OF THEIR OWN STYLE AND EXPRESS THEMSELVES.</p>
+            <p>I THINK I AM A PERSON WHO LIKES TO CREATE, SO I LIKE TO USE PROGRAMMING LANGUAGES ​​TO DEVELOP MY OWN WORKS.</p>
+            <p>FOR ME, ANYTHING I CREATE IS MY WORK, AND IT CAN EXPRESS MY AESTHETICS AND VIEWS ON THE WORLD.</p>
+        </div>
+        <div class="graphics">
+            <svg width="400" height="400" viewBox="0 0 400 400" >
+            </svg>
+        </div>
+</section>
+<!-- 下拉按钮 -->
+<button id="showInterestsButton" class="show-interests-button" onclick="toggleInterests()">Show My Interests</button>
+
+    <!-- 兴趣爱好 -->
+    <section id="interests" class="hidden">
+        <h2>MY INTERESTS</h2>
+        <ul>
+            <li class="typing-effect" style="animation-delay: 0s;">ELECTRONIC MUSIC AND ROCK CULTURE</li>
+            <li class="typing-effect" style="animation-delay: 0.5s;">"RADIATION" - A GAME THAT INSPIRED MY CREATIVITY</li>
+            <li class="typing-effect" style="animation-delay: 1s;">BADMINTON, TENNIS, AND LONG-DISTANCE RUNNING</li>
+            <li class="typing-effect" style="animation-delay: 1.2;">SARTRE, NIETZSCHE, AND FOUCAULT - MY INFLUENTIAL PHILOSOPHERS</li>
+            <li class="typing-effect" style="animation-delay: 1.8s;">PHILOSOPHY AND THE CONNECTION TO MY SPIRIT, BELIEVING IN THE POWER OF THE UNIVERSE</li>
+            <li class="typing-effect" style="animation-delay: 2.5s;">EXISTENTIALISM AND ROCK CULTURE INFLUENCED MY HIGH SCHOOL YEARS</li>
+            <li class="typing-effect" style="animation-delay: 2.8s;">INTEREST IN MODERN CHINESE HISTORY</li>
+        </ul>
+        
+    </section>
+    <section>
+    <footer>
+        <div class="footer-content">
+            <div class="personal-info">
+            <p>lsiyu9579@gmail.com</p>
+            <p>address Shanghai, PEOPLE'S REPUBLIC OF CHINA</p>
+            <p>&copy; ALL CONTENT RESERVED BY SIYU</p>
+        </div>
+    </footer>
+        </div>
+    </section>
+    <script src="../js/about.js"></script> <!-- 引入 JavaScript 脚本 -->
+</body>
+</html>

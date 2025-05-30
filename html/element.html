@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element - Discover the Music</title>
+    <link rel="stylesheet" href="../css/element.css"> <!-- 引入外部 CSS 样式 -->
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <div class="navbar">
+                <!-- 菜单按钮：只在小屏幕时显示 -->
+                <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="../html/home.html" class="nav-item"><span class="front">Home</span><span class="back">Back to Home</span></a></li>
+                    <li><a href="../html/element.html" class="nav-item"><span class="front">Element</span><span class="back">Read More</span></a></li>
+                    <li><a href="../html/timeline.html" class="nav-item"><span class="front">Timeline</span><span class="back">Read More</span></a></li>
+                    <li><a href="../html/about.html" class="nav-item"><span class="front">About Me</span><span class="back">Read More</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Element 页面内容 -->
+    <div id="element">
+        <h1>Element</h1>
+        <h2>点击图片查看详情</h2>
+        <!-- 照片墙 -->
+        <div class="photo-wall waterfall">
+            <!-- 每个照片块 -->
+            <div class="photo-item" onclick="showModal('../figure/unknown_pleasure.jpg', '来着英国曼彻斯特的摇滚乐队joy division，是一个前卫摇滚乐队，这张专辑在音乐史与设计史上留下了浓墨重彩的一笔，ian某种程度上称为我的偶像')">
+                <img src="../figure/unknown_pleasure.jpg" alt="Unknown Pleasure" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/visions.jpg', '个人认为是grimes最有灵气的一张专辑，前卫的合成器与电子音乐效果，甜蜜而怪诞的女声，歌词和音色略带有哥特效果，简直是外星人的音乐.')">
+                <img src="../figure/visions.jpg" alt="Visions" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/treasure.jpg', 'Treasure是极地双子星的经典之作，难以置信这是来自1984年的专辑，由大名鼎鼎的a4d厂牌制作，梦幻朦胧的的女声宛如巴洛克珍珠，被评价为“The Voice of God”在也是最早的hyperpop，深受王菲的喜爱.')">
+                <img src="../figure/treasure.jpg" alt="Treasure" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/lorde.jpg', 'Lorde是我认为最有才华的欧美女歌手之一，虽然新专辑乏善可陈.')">
+                <img src="../figure/lorde.jpg" alt="Lorde" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/my_band.jpg', '这是我的乐队，我们在一起排练的一年多，我们来自不同的学校但是因为共同的音乐爱好走到一起.')">
+                <img src="../figure/my_band.jpg" alt="My Band" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/lu_mountain.jpg', '冬天的庐山宛如仙境.')">
+                <img src="../figure/lu_mountain.jpg" alt="Mountain" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('images/osaka_new_order.jpg', '在大阪看了80年代英国新浪潮电子乐队new order的演出，应该是他们的最后一场亚巡')">
+                <img src="../figure/lu_mountain.jpg" alt="New Order in Osaka" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/grimes.jpg', 'Grimes.')">
+                <img src="../figure/grimes.jpg" alt="Grimes" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/photographer.jpg', '新加坡国立博物馆看到的摄影展览，主题是亚马逊雨林，摄影师萨巴斯蒂安曾经是一个经济学家，擅长用经济学视角进行摄影')">
+                <img src="../figure/photographer.jpg" alt="Photographer" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/rola.jpg', '罗拉快跑是我喜欢的德国电影，融合了柏林历史、德国电子音乐和街头文化，其高超的剪辑和叙事在影史上非常著名')">
+                <img src="../figure/rola.jpg" alt="Rola" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/shared_office_space.jpg', '我在上海最喜欢的共享办公室we-work，里面常年有拉布拉多犬和好闻的咖啡.')">
+                <img src="../figure/shared_office_space.jpg" alt="Shared Office Space" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/snow_in_kyoto.jpg', '京都雪景')">
+                <img src="../figure/snow_in_kyoto.jpg" alt="Snow in Kyoto" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/substance.jpg', 'Substance是我最喜欢的new order专辑')">
+                <img src="../figure/substance.jpg" alt="Substance" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/treasure.jpg', 'Treasure is an album that focuses on discovering inner beauty.')">
+                <img src="../figure/treasure.jpg" alt="Treasure" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/花.jpg', '朋友送的花')">
+                <img src="../figure/花.jpg" alt="Unknown Pleasure" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/vangogh.jpg', '梵高的杏花')">
+                <img src="../figure/vangogh.jpg" alt="Van Gogh" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/kyoto_garden.jpg', '雪化后的京都园林')">
+                <img src="../figure/kyoto_garden.jpg" alt="Kyoto Garden" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/kyoto_lantern.jpg', '清水寺的黑金色灯笼')">
+                <img src="../figure/kyoto_lantern.jpg" alt="Kyoto Lantern" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/kyoto_torii.jpg', '京都街头的鸟居')">
+                <img src="../figure/kyoto_torii.jpg" alt="Kyoto Torii" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/changji_airpot.jpg', '樟宜机场')">
+                <img src="../figure/changji_airpot.jpg" alt="Changji Airport" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/different_class.jpg', '很喜欢的乐队pulp的经典专辑，勾勒出了乐队的工人阶级，反叛，来自英国工业城市，颓丧自由的形象')">
+                <img src="../figure/different_class.jpg" alt="Different Class" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/中山公园.jpg', '上海中山公园的夏天')">
+                <img src="../figure/中山公园.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/卷宗.jpg', '非常好看的设计杂志卷宗')">
+                <img src="../figure/卷宗.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/复兴公园.jpg', '夜晚的襄阳公园，人们在高大的梧桐树下跳舞')">
+                <img src="../figure/复兴公园.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/安福路.jpg', '梧桐区')">
+                <img src="../figure/安福路.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/the_velvet_underground.jpg', '这是一张地下丝绒乐队的专辑，地下丝绒乐队是一支来自纽约的摇滚乐队，在当时非常前卫，影响了很多后来摇滚乐队的传作')">
+                <img src="../figure/the_velvet_underground.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/淮海路.jpg', '淮海路上一家什么都有的买手店')">
+                <img src="../figure/淮海路.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/民大海淀.jpg', ' 春季的中央民族大学海淀校区')">
+                <img src="../figure/民大海淀.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/oasis.jpg', '精神领袖,最喜欢的曼彻斯特两兄弟oasis乐队')">
+                <img src="../figure/oasis.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/三宅一生.jpg', '一件有趣的衣服，叠起来是一个花的形状')">
+                <img src="../figure/三宅一生.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/pho.jpg', '最喜欢的食物之一越南粉')">
+                <img src="../figure/pho.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/the_velvet_underground.jpg', 'This is a traditional piece from Jingdezhen, known for its porcelain craftsmanship.')">
+                <img src="../figure/the_velvet_underground.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/melting_moment.jpg', '来自日本的非常棒的专辑')">
+                <img src="../figure/melting_moment.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/lily.jpg', 'lily')">
+                <img src="../figure/lily.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/朋克造型.jpg', '看起来很punk的店')">
+                <img src="../figure/朋克造型.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/寿喜烧.jpg', '好吃的寿喜烧')">
+                <img src="../figure/寿喜烧.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/巴黎歌剧院.jpg', '亮灯的巴黎歌剧院')">
+                <img src="../figure/巴黎歌剧院.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/ride.jpg', '英国摇滚乐队的中国演出')">
+                <img src="../figure/ride.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/多抓鱼.jpg', '挺好看的书')">
+                <img src="../figure/多抓鱼.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/流水别墅.jpg', '漂亮房子，dream house但是据说建筑漏水')">
+                <img src="../figure/流水别墅.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/acid.jpg', 'symphony in acid是非常棒的数字媒体艺术作品，是一个网页，以维特根斯坦的语言哲学为灵感，配上电子音乐与网页动效，极致的试听体验')">
+                <img src="../figure/acid.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            <div class="photo-item" onclick="showModal('../figure/上海最好吃冰激凌.jpg', 'luneus是上海最好吃的冰淇淋，特别是焦糖海盐')">
+                <img src="../figure/上海最好吃冰激凌.jpg" alt="Jingdezhen" class="photo-image">
+            </div>
+            
+            <!-- 更多的照片项... -->
+        </div>
+
+        <!-- 模态框 -->
+        <div id="modal" class="modal" onclick="closeModal()">
+            <div class="modal-content">
+                <img id="modal-image" src="" alt="Modal Image" class="modal-image">
+                <p id="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/element.js"></script> <!-- 引入外部 JavaScript 文件 -->
+</body>
+</html>
